@@ -86,7 +86,10 @@ const VotingAreaPage = () => {
     getUserAccount();
   }, [userAddress]);
 
-  const submitVoteHandler = (id, name) => {
+  const submitVoteHandler = async (id, name) => {
+
+    await NoOp(app_id, name, client);
+
     //log clicked button
     console.log(`You voted user candidate with ID: ${id} corresponding to ${name}`);
     console.log(`App ID: ${app_id}`);
@@ -97,9 +100,6 @@ const VotingAreaPage = () => {
     buttons.forEach((button) => {
       button.disabled = true;
     })
-
-    NoOp(app_id, name, client);
-
   }
 
   return (
